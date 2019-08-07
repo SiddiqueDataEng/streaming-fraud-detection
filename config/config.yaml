@@ -1,0 +1,51 @@
+# Configuration for 39-streaming-fraud-detection
+
+# Application Settings
+app:
+  name: "39-streaming-fraud-detection"
+  version: "1.0.0"
+  environment: "production"
+  
+# Data Settings
+data:
+  input_path: "s3://data-lake/raw/"
+  output_path: "s3://data-lake/processed/"
+  format: "parquet"
+  compression: "snappy"
+  
+# Processing Settings
+processing:
+  batch_size: 1000
+  parallelism: 4
+  timeout: 3600
+  retry_attempts: 3
+  
+# Database Settings
+database:
+  host: "localhost"
+  port: 5432
+  name: "analytics"
+  pool_size: 10
+  
+# Cache Settings
+cache:
+  enabled: true
+  ttl: 3600
+  backend: "redis"
+  
+# Monitoring Settings
+monitoring:
+  enabled: true
+  metrics_port: 9090
+  log_level: "INFO"
+  
+# Security Settings
+security:
+  encryption_enabled: true
+  authentication_required: true
+  
+# Performance Settings
+performance:
+  max_workers: 8
+  queue_size: 1000
+  memory_limit: "4GB"
